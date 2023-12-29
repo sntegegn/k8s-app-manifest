@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shorturl
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: shorturl
+  template:
+    metadata:
+      labels:
+        app: shorturl
+    spec:
+      containers:
+      - name: shorturl
+        image: sntegegn/url-shortner
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 4000
+
+
